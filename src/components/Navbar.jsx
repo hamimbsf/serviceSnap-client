@@ -12,16 +12,16 @@ const Navbar = () => {
           <summary>Dashboard</summary>
           <ul className="p-2 w-40">
             <li>
-              <NavLink to="*">Add Service</NavLink>
+              <NavLink to="/add-services">Add Service</NavLink>
             </li>
             <li>
-              <NavLink to="*">Manage Service</NavLink>
+              <NavLink to="/manage-service">Manage Service</NavLink>
             </li>
             <li>
-              <NavLink to="*">Booked-Services</NavLink>
+              <NavLink to="/booked-services">Booked-Services</NavLink>
             </li>
             <li>
-              <NavLink to="*">Service-To-Do</NavLink>
+              <NavLink to="/service-to-do">Service-To-Do</NavLink>
             </li>
           </ul>
         </details>

@@ -3,6 +3,10 @@ import App from "../App";
 import Home from "../pages/Home/Home";
 import AllServices from "../pages/AllServices";
 import ServiceDetails from "../pages/ServiceDetails";
+import AddServices from "../pages/AddServices";
+import { ServiceToDo } from "../pages/ServiceToDo";
+import ManageService from "../pages/ManageService";
+import BookedServices from "../pages/BookedServices";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +23,22 @@ const router = createBrowserRouter([
       {
         path: "/services/details",
         element: <ServiceDetails />,
+      },
+      {
+        path: "/add-services",
+        element: <AddServices />,
+      },
+      {
+        path: "/manage-service",
+        element: <ManageService />,
+      },
+      {
+        path: "/booked-services",
+        element: <BookedServices />,
+      },
+      {
+        path: "/service-to-do",
+        element: <ServiceToDo />,
       },
     ],
   },
