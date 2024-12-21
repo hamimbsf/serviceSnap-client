@@ -10,6 +10,18 @@ Add button
 
 The person adding the service is a service Provider .  You have to store service provider information with the service information such as Service provider image , Service provider name, Service provider email   will be taken from firebase . On clicking the add service button service information  will be added in the database. 
  */
+  const handleAddMovies = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const imageURL = form.imageURL.value;
+    const serviceName = form.serviceName.value;
+    const price = form.price.value;
+    const area = form.area.value;
+    const description = form.description.value;
+    const data = { imageURL, serviceName, price, area, description };
+    console.log(data);
+  };
+
   return (
     <>
       <div
@@ -24,16 +36,17 @@ The person adding the service is a service Provider .  You have to store service
           <h2 className="text-2xl font-bold text-center mb-6">
             Add New Service
           </h2>
-          <form>
+          <form onSubmit={handleAddMovies}>
             {/* Image URL */}
             <div className="form-control mb-4">
               <label className="label">
                 <span className="label-text">Image URL of the Service</span>
               </label>
               <input
-                type="text"
+                type="url"
+                name="imageURL"
                 placeholder="Enter image URL"
-                className="input input-bordered w-full"
+                className="input border-none w-full"
               />
             </div>
 
@@ -44,8 +57,9 @@ The person adding the service is a service Provider .  You have to store service
               </label>
               <input
                 type="text"
+                name="serviceName"
                 placeholder="Enter service name"
-                className="input input-bordered w-full"
+                className="input border-none w-full"
               />
             </div>
 
@@ -56,8 +70,9 @@ The person adding the service is a service Provider .  You have to store service
               </label>
               <input
                 type="number"
+                name="price"
                 placeholder="Enter price"
-                className="input input-bordered w-full"
+                className="input border-none w-full"
               />
             </div>
 
@@ -66,7 +81,7 @@ The person adding the service is a service Provider .  You have to store service
               <label className="label">
                 <span className="label-text">Service Area</span>
               </label>
-              <select className="select select-bordered w-full">
+              <select name="area" className="select select-bordered w-full">
                 <option disabled>Select Area</option>
                 <option>Dhaka</option>
                 <option>Comilla</option>
@@ -81,7 +96,8 @@ The person adding the service is a service Provider .  You have to store service
                 <span className="label-text">Description</span>
               </label>
               <textarea
-                className="textarea textarea-bordered w-full"
+                name="description"
+                className="textarea border-none w-full"
                 placeholder="Enter service description"
                 maxLength="100"
               ></textarea>
