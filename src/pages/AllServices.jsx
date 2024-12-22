@@ -13,7 +13,7 @@ const AllServices = () => {
         `${import.meta.env.VITE_SERVER_URL}/all-services`
       );
       setAllServices(data);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       // console.log(error.message);
     }

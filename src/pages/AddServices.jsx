@@ -32,11 +32,11 @@ The person adding the service is a service Provider .  You have to store service
       price,
       area,
       description,
-      displayName,
-      email,
-      photoURL,
+      providerName: displayName,
+      providerEmail: email,
+      providerPhoto: photoURL,
     };
-    console.log(serviceData);
+    // console.log(serviceData);
 
     try {
       const { data } = await axios.post(

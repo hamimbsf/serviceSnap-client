@@ -9,8 +9,8 @@ const Card = ({ service }) => {
     price,
     area,
     description,
-    displayName,
-    photoURL,
+    providerName,
+    providerPhoto,
   } = service;
   return (
     <div className="card rounded-lg">
@@ -32,11 +32,11 @@ const Card = ({ service }) => {
         <div className="flex items-center gap-4 mb-4">
           <div className="avatar">
             <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src={photoURL} alt="Provider Name" />
+              <img src={providerPhoto} alt="Provider Name" />
             </div>
           </div>
           <div>
-            <p className="text-sm font-medium">{displayName}</p>
+            <p className="text-sm font-medium">{providerName}</p>
             <p className="text-sm font-medium">{area}</p>
           </div>
         </div>
@@ -44,7 +44,7 @@ const Card = ({ service }) => {
         <div className="flex justify-between items-center">
           <span className="text-lg font-semibold text-green-600">${price}</span>
           {/* View Detail Button */}
-          <Link to={`/services/${_id}`} className="btn btn-primary btn-sm">
+          <Link to={`/service/${_id}`} className="btn btn-primary btn-sm">
             View Details
           </Link>
         </div>
