@@ -1,7 +1,22 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvder";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
+
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        // console.error(error);
+      });
+  };
   const navLink = (
     <>
       <li>
@@ -85,22 +100,32 @@ const Navbar = () => {
         <div className="navbar-end">
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="m-1">
-              <img
-                src="https://i.ibb.co.com/kgSRLGw/mysterious-mafia-man-smoking-cigarette-52683-34828.jpg"
-                className="w-10 rounded-full avatar"
-                alt=""
-              />
+              {user ? (
+                <img
+                  referrerPolicy="no-referrer"
+                  className="w-10 hover:ring rounded-full avatar"
+                  src={user?.photoURL}
+                  alt=""
+                />
+              ) : (
+                <img
+                  src="https://i.ibb.co.com/kgSRLGw/mysterious-mafia-man-smoking-cigarette-52683-34828.jpg"
+                  className="w-10 hover:ring rounded-full avatar"
+                  alt=""
+                />
+              )}
             </div>
             <ul
               tabIndex={0}
               className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
             >
+              <li>{user ? <p>{user?.displayName}</p> : <p>Guest</p>}</li>
               <li>
-                <p>Hamim</p>
-              </li>
-              <li>
-                <button>Logout</button>
-                <Link to="/login">Login</Link>
+                {user ? (
+                  <button onClick={handleSignOut}>Logout</button>
+                ) : (
+                  <Link to="/login">Login</Link>
+                )}
               </li>
             </ul>
           </div>

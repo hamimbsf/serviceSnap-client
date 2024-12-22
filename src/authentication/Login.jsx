@@ -81,7 +81,7 @@ const Login = () => {
                 />
                 <p className="text-start my-2">
                   <Link
-                    to="/forget-password"
+                    to="/forgot-password"
                     className="text-white text-sm hover:underline"
                   >
                     Forget Password
@@ -111,7 +111,7 @@ const Login = () => {
             {/* Register Link */}
             <p className="text-sm text-center text-gray-400">
               Don't have an account?{" "}
-              <Link to="/register" className="text-red-500 hover:underline">
+              <Link to="/registration" className="text-red-500 hover:underline">
                 Register
               </Link>
             </p>
