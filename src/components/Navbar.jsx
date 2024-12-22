@@ -100,7 +100,7 @@ const Navbar = () => {
               </li>
               <li>
                 <button>Logout</button>
-                {/* <Link to="/login">Login</Link> */}
+                <Link to="/login">Login</Link>
               </li>
             </ul>
           </div>
