@@ -1,3 +1,7 @@
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../provider/AuthProvder";
+import axios from "axios";
+
 const AddServices = () => {
   /* Create an Add Product page where there will be a form having the following fields:
 Image URL of the Service 
@@ -10,16 +14,39 @@ Add button
 
 The person adding the service is a service Provider .  You have to store service provider information with the service information such as Service provider image , Service provider name, Service provider email   will be taken from firebase . On clicking the add service button service information  will be added in the database. 
  */
-  const handleAddMovies = (e) => {
+
+  const { user } = useContext(AuthContext);
+
+  const handleAddService = async (e) => {
     e.preventDefault();
+    const { displayName, email, photoURL } = user;
     const form = e.target;
-    const imageURL = form.imageURL.value;
+    const productImg = form.imageURL.value;
     const serviceName = form.serviceName.value;
     const price = form.price.value;
     const area = form.area.value;
     const description = form.description.value;
-    const data = { imageURL, serviceName, price, area, description };
-    console.log(data);
+    const serviceData = {
+      productImg,
+      serviceName,
+      price,
+      area,
+      description,
+      displayName,
+      email,
+      photoURL,
+    };
+    console.log(serviceData);
+
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_SERVER_URL}/add-services`,
+        serviceData
+      );
+      console.log(data);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -36,7 +63,7 @@ The person adding the service is a service Provider .  You have to store service
           <h2 className="text-2xl font-bold text-center mb-6">
             Add New Service
           </h2>
-          <form onSubmit={handleAddMovies}>
+          <form onSubmit={handleAddService}>
             {/* Image URL */}
             <div className="form-control mb-4">
               <label className="label">
