@@ -10,11 +10,14 @@ import BookedServices from "../pages/BookedServices";
 import Login from "../authentication/Login";
 import Registration from "../authentication/Registration";
 import ForgetPass from "../authentication/ForgetPass";
+import PrivateRoute from "../authentication/Private/PrivateRoute";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -38,23 +41,43 @@ const router = createBrowserRouter([
       },
       {
         path: "/services/details",
-        element: <ServiceDetails />,
+        element: (
+          <PrivateRoute>
+            <ServiceDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/add-services",
-        element: <AddServices />,
+        element: (
+          <PrivateRoute>
+            <AddServices />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/manage-service",
-        element: <ManageService />,
+        element: (
+          <PrivateRoute>
+            <ManageService />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/booked-services",
-        element: <BookedServices />,
+        element: (
+          <PrivateRoute>
+            <BookedServices />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/service-to-do",
-        element: <ServiceToDo />,
+        element: (
+          <PrivateRoute>
+            <ServiceToDo />
+          </PrivateRoute>
+        ),
       },
     ],
   },
