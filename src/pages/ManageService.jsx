@@ -49,6 +49,8 @@ const ManageService = () => {
             key={service?._id}
             service={service}
             handleDelete={handleDelete}
+            fetchData={fetchData}
+            // handleUpdate={handleUpdate}
           />
         ))}
       </div>

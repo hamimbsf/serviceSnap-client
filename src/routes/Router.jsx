@@ -12,6 +12,7 @@ import Registration from "../authentication/Registration";
 import ForgetPass from "../authentication/ForgetPass";
 import PrivateRoute from "../authentication/Private/PrivateRoute";
 import ErrorPage from "../pages/ErrorPage";
+import UpdateService from "../pages/UpdateService";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ServiceDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateService />
           </PrivateRoute>
         ),
       },
