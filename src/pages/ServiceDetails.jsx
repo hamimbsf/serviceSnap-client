@@ -1,9 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvder";
 
 const ServiceDetails = () => {
   const [service, setService] = useState([]);
+  const { user } = useContext(AuthContext);
   const { id } = useParams();
   useEffect(() => {
     fetchService();
@@ -18,11 +21,23 @@ const ServiceDetails = () => {
       console.log(error.message);
     }
   };
-  // const {} = service;
 
+  const handleBookService = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_SERVER_URL}/book-service`
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <>
       <div className="container mx-auto py-10 px-4">
+        <Helmet>
+          <title>ServiceSnap || {`${service?.serviceName}`}</title>
+        </Helmet>
         {/* Card Layout */}
         <div className="card lg:card-side bg-gradient-to-r from-white to-gray-50 shadow-xl rounded-lg hover:shadow-2xl transition-shadow duration-300">
           {/* Left Section: Service Image */}
@@ -68,9 +83,170 @@ const ServiceDetails = () => {
               <div className="text-xl font-bold text-green-600">
                 Price: <span>${service?.price}</span>
               </div>
-              <button className="btn btn-primary px-6 py-3 hover:bg-primary-focus transition-all duration-300">
+              <button
+                className="btn"
+                onClick={() =>
+                  document.getElementById("my_modal_1").showModal()
+                }
+              >
                 Book Now
               </button>
+              <dialog id="my_modal_1" className="modal">
+                <div className="modal-box">
+                  <form onSubmit={handleBookService}>
+                    {/* Service Name */}
+                    <div className="mb-4">
+                      <label
+                        htmlFor="serviceName"
+                        className="block text-sm font-medium text-white"
+                      >
+                        Service Name
+                      </label>
+                      <input
+                        type="text"
+                        name="serviceName"
+                        value={`${service?.serviceName}`}
+                        readOnly
+                        className="input border-none w-full cursor-not-allowed"
+                      />
+                    </div>
+
+                    {/* Provider Email */}
+                    <div className="mb-4">
+                      <label
+                        htmlFor="providerEmail"
+                        className="block text-sm font-medium text-white"
+                      >
+                        Provider Email
+                      </label>
+                      <input
+                        type="email"
+                        name="providerEmail"
+                        value={`${service?.providerEmail}`}
+                        readOnly
+                        className="input border-none w-full cursor-not-allowed"
+                      />
+                    </div>
+
+                    {/* Provider Name */}
+                    <div className="mb-4">
+                      <label
+                        htmlFor="providerName"
+                        className="block text-sm font-medium text-white"
+                      >
+                        Provider Name
+                      </label>
+                      <input
+                        type="text"
+                        name="providerName"
+                        value={`${service?.providerName}`}
+                        readOnly
+                        className="input border-none w-full cursor-not-allowed"
+                      />
+                    </div>
+
+                    {/* Current User Email */}
+                    <div className="mb-4">
+                      <label
+                        htmlFor="currentUserEmail"
+                        className="block text-sm font-medium text-white"
+                      >
+                        Your Email
+                      </label>
+                      <input
+                        type="email"
+                        name="currentUserEmail"
+                        value={`${user?.email}`}
+                        readOnly
+                        className="input border-none w-full cursor-not-allowed"
+                      />
+                    </div>
+
+                    {/* Current User Name */}
+                    <div className="mb-4">
+                      <label
+                        htmlFor="currentUserName"
+                        className="block text-sm font-medium text-white"
+                      >
+                        Your Name
+                      </label>
+                      <input
+                        type="text"
+                        name="currentUserName"
+                        value={`${user?.displayName}`}
+                        readOnly
+                        className="input border-none w-full cursor-not-allowed"
+                      />
+                    </div>
+
+                    {/* Service Taking Date */}
+                    <div className="mb-4">
+                      <label
+                        htmlFor="serviceDate"
+                        className="block text-sm font-medium text-white"
+                      >
+                        Service Taking Date
+                      </label>
+                      <input
+                        type="date"
+                        name="serviceDate"
+                        required
+                        className="input border-none w-full"
+                      />
+                    </div>
+
+                    {/* Special Instructions */}
+                    <div className="mb-4">
+                      <label
+                        htmlFor="specialInstructions"
+                        className="block text-sm font-medium text-white"
+                      >
+                        Special Instructions
+                      </label>
+                      <textarea
+                        name="specialInstructions"
+                        rows="3"
+                        required
+                        placeholder="Enter address, area, or customized service plan"
+                        className="textarea border-none w-full"
+                      ></textarea>
+                    </div>
+
+                    {/* Price */}
+                    <div className="mb-4">
+                      <label
+                        htmlFor="price"
+                        className="block text-sm font-medium text-white"
+                      >
+                        Price
+                      </label>
+                      <input
+                        type="text"
+                        name="price"
+                        value={`${service?.price}`}
+                        readOnly
+                        className="input border-none w-full cursor-not-allowed"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="btn btn-primary w-full mt-4"
+                    >
+                      Purchase
+                    </button>
+                  </form>
+                  <div className="modal-action">
+                    <button
+                      className="btn"
+                      onClick={() =>
+                        document.getElementById("my_modal_1").close()
+                      }
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </dialog>
             </div>
           </div>
         </div>

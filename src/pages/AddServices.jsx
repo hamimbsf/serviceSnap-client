@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "../provider/AuthProvder";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const AddServices = () => {
   /* Create an Add Product page where there will be a form having the following fields:
@@ -53,6 +54,9 @@ The person adding the service is a service Provider .  You have to store service
 
   return (
     <>
+      <Helmet>
+        <title>ServiceSnap || Add Service</title>
+      </Helmet>
       <div
         className="hero absolute top-0 min-h-screen"
         style={{
