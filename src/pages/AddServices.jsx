@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../provider/AuthProvder";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AddServices = () => {
   /* Create an Add Product page where there will be a form having the following fields:
@@ -43,7 +44,8 @@ The person adding the service is a service Provider .  You have to store service
         `${import.meta.env.VITE_SERVER_URL}/add-services`,
         serviceData
       );
-      console.log(data);
+      toast.success("Congrates!");
+      form.reset();
     } catch (error) {
       console.log(error.message);
     }
@@ -74,6 +76,7 @@ The person adding the service is a service Provider .  You have to store service
                 name="imageURL"
                 placeholder="Enter image URL"
                 className="input border-none w-full"
+                required
               />
             </div>
 
@@ -87,6 +90,7 @@ The person adding the service is a service Provider .  You have to store service
                 name="serviceName"
                 placeholder="Enter service name"
                 className="input border-none w-full"
+                required
               />
             </div>
 
@@ -100,6 +104,7 @@ The person adding the service is a service Provider .  You have to store service
                 name="price"
                 placeholder="Enter price"
                 className="input border-none w-full"
+                required
               />
             </div>
 
@@ -108,7 +113,11 @@ The person adding the service is a service Provider .  You have to store service
               <label className="label">
                 <span className="label-text">Service Area</span>
               </label>
-              <select name="area" className="select select-bordered w-full">
+              <select
+                name="area"
+                className="select select-bordered w-full"
+                required
+              >
                 <option disabled>Select Area</option>
                 <option>Dhaka</option>
                 <option>Comilla</option>
@@ -127,6 +136,7 @@ The person adding the service is a service Provider .  You have to store service
                 className="textarea border-none w-full"
                 placeholder="Enter service description"
                 maxLength="100"
+                required
               ></textarea>
             </div>
 
