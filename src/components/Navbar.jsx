@@ -103,14 +103,14 @@ const Navbar = () => {
               {user ? (
                 <img
                   referrerPolicy="no-referrer"
-                  className="w-10 hover:ring rounded-full avatar"
+                  className="w-11 h-11 object-cover hover:ring rounded-full avatar"
                   src={user?.photoURL}
                   alt=""
                 />
               ) : (
                 <img
                   src="https://i.ibb.co.com/kgSRLGw/mysterious-mafia-man-smoking-cigarette-52683-34828.jpg"
-                  className="w-10 hover:ring rounded-full avatar"
+                  className="w-11 h-11 hover:ring rounded-full avatar"
                   alt=""
                 />
               )}

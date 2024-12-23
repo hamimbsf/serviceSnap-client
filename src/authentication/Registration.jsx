@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvder";
+import { toast } from "react-toastify";
 
 const Registration = () => {
   const { createUser, manageProfile } = useContext(AuthContext);
@@ -34,7 +35,7 @@ const Registration = () => {
         manageProfile(name, image);
         e.target.reset();
         navigate("/");
-        alert("Registration Successful");
+        toast.success("Registration Successful");
         //sending data to the serverside
       })
       .catch((error) => {

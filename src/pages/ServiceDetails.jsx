@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvder";
+import { toast } from "react-toastify";
 
 const ServiceDetails = () => {
   const [service, setService] = useState([]);
@@ -24,10 +25,36 @@ const ServiceDetails = () => {
 
   const handleBookService = async (e) => {
     e.preventDefault();
+    const form = e.target;
+    const serviceProviderEmail = form.providerEmail.value;
+    const serviceProviderName = form.providerName.value;
+    const serviceName = form.serviceName.value;
+    const serviceTakerEmail = form.currentUserEmail.value;
+    const serviceTakerName = form.currentUserName.value;
+    const serviceDate = form.serviceDate.value;
+    const specialInstructions = form.specialInstructions.value;
+    const price = form.price.value;
+    const serviceData = {
+      id: service?._id,
+      serviceProviderEmail,
+      serviceName,
+      serviceProviderName,
+      serviceTakerEmail,
+      serviceTakerName,
+      serviceDate,
+      specialInstructions,
+      price,
+      status: "pending",
+    };
+    // console.log(serviceData);
+
     try {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_SERVER_URL}/book-service`
+        `${import.meta.env.VITE_SERVER_URL}/book-service`,
+        serviceData
       );
+      // console.log(data);
+      toast.success("Congrats");
     } catch (error) {
       console.log(error.message);
     }
@@ -207,7 +234,7 @@ const ServiceDetails = () => {
                         name="specialInstructions"
                         rows="3"
                         required
-                        placeholder="Enter address, area, or customized service plan"
+                        placeholder="your service plan"
                         className="textarea border-none w-full"
                       ></textarea>
                     </div>
@@ -230,6 +257,9 @@ const ServiceDetails = () => {
                     </div>
                     <button
                       type="submit"
+                      onClick={() =>
+                        document.getElementById("my_modal_1").close()
+                      }
                       className="btn btn-primary w-full mt-4"
                     >
                       Purchase
