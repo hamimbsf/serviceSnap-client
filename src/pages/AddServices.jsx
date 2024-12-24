@@ -80,7 +80,7 @@ The person adding the service is a service Provider .  You have to store service
                 type="url"
                 name="imageURL"
                 placeholder="Enter image URL"
-                className="input border-none w-full"
+                className="input border-none text-black w-full"
                 required
               />
             </div>
@@ -94,7 +94,7 @@ The person adding the service is a service Provider .  You have to store service
                 type="text"
                 name="serviceName"
                 placeholder="Enter service name"
-                className="input border-none w-full"
+                className="input border-none text-black w-full"
                 required
               />
             </div>
@@ -108,7 +108,7 @@ The person adding the service is a service Provider .  You have to store service
                 type="number"
                 name="price"
                 placeholder="Enter price"
-                className="input border-none w-full"
+                className="input border-none text-black w-full"
                 required
               />
             </div>
@@ -120,7 +120,7 @@ The person adding the service is a service Provider .  You have to store service
               </label>
               <select
                 name="area"
-                className="select select-bordered w-full"
+                className="select select-bordered text-black w-full"
                 required
               >
                 <option disabled>Select Area</option>
@@ -138,7 +138,7 @@ The person adding the service is a service Provider .  You have to store service
               </label>
               <textarea
                 name="description"
-                className="textarea border-none w-full"
+                className="textarea text-black border-none w-full"
                 placeholder="Enter service description"
                 maxLength="100"
                 required
