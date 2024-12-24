@@ -8,7 +8,7 @@ const PopularServices = () => {
     const fetchAllData = async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_SERVER_URL}/all-services`
+          `${import.meta.env.VITE_SERVER_URL}/popular-services`
         );
         setAllServices(data);
       } catch (error) {

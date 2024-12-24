@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvder";
 import { toast } from "react-toastify";
 
 const ServiceDetails = () => {
   const [service, setService] = useState([]);
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const { id } = useParams();
   useEffect(() => {
@@ -34,6 +35,9 @@ const ServiceDetails = () => {
     const serviceDate = form.serviceDate.value;
     const specialInstructions = form.specialInstructions.value;
     const price = form.price.value;
+    if (user?.email === serviceProviderEmail) {
+      return toast.error("Action not permited");
+    }
     const serviceData = {
       id: service?._id,
       serviceProviderEmail,
@@ -55,8 +59,10 @@ const ServiceDetails = () => {
       );
       // console.log(data);
       toast.success("Congrats");
+      navigate("/booked-services");
     } catch (error) {
-      console.log(error.message);
+      // console.log(error);
+      toast.error(error?.response?.data);
     }
   };
   return (
@@ -257,9 +263,6 @@ const ServiceDetails = () => {
                     </div>
                     <button
                       type="submit"
-                      onClick={() =>
-                        document.getElementById("my_modal_1").close()
-                      }
                       className="btn btn-primary w-full mt-4"
                     >
                       Purchase
@@ -267,7 +270,7 @@ const ServiceDetails = () => {
                   </form>
                   <div className="modal-action">
                     <button
-                      className="btn"
+                      className="btn w-full btn-error"
                       onClick={() =>
                         document.getElementById("my_modal_1").close()
                       }

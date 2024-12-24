@@ -1,6 +1,7 @@
 import axios from "axios";
 import Card from "../components/Card";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const AllServices = () => {
   const [allServices, setAllServices] = useState([]);
@@ -20,6 +21,9 @@ const AllServices = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>ServiceSnap || All Service</title>
+      </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 container mx-auto px-4 py-8">
         {allServices.map((service) => (
           <Card key={service._id} service={service} />

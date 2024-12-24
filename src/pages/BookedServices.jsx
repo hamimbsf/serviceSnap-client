@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvder";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const BookedServices = () => {
   const { user } = useContext(AuthContext);
@@ -23,6 +24,9 @@ const BookedServices = () => {
 
   return (
     <>
+      <Helmet>
+        <title>ServiceSnap || Booked Service</title>
+      </Helmet>
       <div className="overflow-x-auto container mx-auto my-16 px-4">
         <table className="table">
           {/* head */}

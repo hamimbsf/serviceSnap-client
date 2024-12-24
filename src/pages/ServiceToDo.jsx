@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvder";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
+import ServiceToDoTableRow from "../components/ServiceToDoTableRow";
+import { toast } from "react-toastify";
 
 export const ServiceToDo = () => {
   const { user } = useContext(AuthContext);
@@ -17,6 +19,20 @@ export const ServiceToDo = () => {
       );
       // console.log(data);
       setProviderData(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  const handleStatusUpdate = async (id, prevStatus, status) => {
+    console.table({ id, prevStatus, status });
+    if (prevStatus === status) return toast.error("Not Allowed");
+    try {
+      const { data } = await axios.patch(
+        `${import.meta.env.VITE_SERVER_URL}/service-status-update/${id}`,
+        { status }
+      );
+      console.log(data);
+      fetchProviderData();
     } catch (error) {
       console.log(error.message);
     }
@@ -42,33 +58,12 @@ export const ServiceToDo = () => {
           </thead>
           <tbody>
             {providerData?.map((data, index) => (
-              <tr className="hover" key={data._id}>
-                <th>{++index}</th>
-                <td>{data?.serviceName}</td>
-                <td>{data?.serviceDate}</td>
-                <td>{data?.serviceTakerEmail}</td>
-                <td>{data?.price}</td>
-                <td className="">
-                  {/* <span className="btn btn-xs btn-warning">{data?.status}</span> */}
-                  <details className="dropdown">
-                    <summary className="btn m-1 btn-xs btn-warning">
-                      {data?.status}
-                    </summary>
-                    <ul className="menu dropdown-content bg-base-100 rounded-box z-[1]">
-                      <li>
-                        <button className="btn btn-xs btn-error">
-                          Working
-                        </button>
-                      </li>
-                      <li>
-                        <button className="btn btn-xs btn-success">
-                          Complete
-                        </button>
-                      </li>
-                    </ul>
-                  </details>
-                </td>
-              </tr>
+              <ServiceToDoTableRow
+                handleStatusUpdate={handleStatusUpdate}
+                key={data._id}
+                data={data}
+                index={index}
+              />
             ))}
           </tbody>
         </table>
