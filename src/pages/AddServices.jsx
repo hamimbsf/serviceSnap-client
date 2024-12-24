@@ -49,7 +49,7 @@ The person adding the service is a service Provider .  You have to store service
       navigate("/manage-service");
       form.reset();
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
     }
   };
 

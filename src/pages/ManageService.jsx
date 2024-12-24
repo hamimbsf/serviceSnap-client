@@ -27,7 +27,7 @@ const ManageService = () => {
       const { data } = await axiosSecure.get(`/all-services/${user?.email}`);
       setServiceTaker(data);
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
     }
   };
 

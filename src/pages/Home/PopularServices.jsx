@@ -12,7 +12,7 @@ const PopularServices = () => {
         const { data } = await axiosSecure.get(`/popular-services`);
         setAllServices(data);
       } catch (error) {
-        console.log(error.message);
+        // console.log(error.message);
       }
     };
     fetchAllData();

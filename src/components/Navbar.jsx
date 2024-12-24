@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvder";
 import DarkMode from "./DarkMode";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  // console.log(user);
 
   const navigate = useNavigate();
 
@@ -13,6 +13,7 @@ const Navbar = () => {
     logOut()
       .then(() => {
         navigate("/");
+        toast.success("Signed Out");
       })
       .catch((error) => {
         // console.error(error);

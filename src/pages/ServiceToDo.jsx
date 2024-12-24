@@ -19,20 +19,22 @@ export const ServiceToDo = () => {
       // console.log(data);
       setProviderData(data);
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
     }
   };
   const handleStatusUpdate = async (id, prevStatus, status) => {
-    console.table({ id, prevStatus, status });
+    // console.table({ id, prevStatus, status });
     if (prevStatus === status) return toast.error("Not Allowed");
     try {
       const { data } = await axiosSecure.patch(`/service-status-update/${id}`, {
         status,
       });
-      console.log(data);
+      // console.log(data);
+      toast.success("Updated");
       fetchProviderData();
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
+      toast.error(error.message);
     }
   };
 

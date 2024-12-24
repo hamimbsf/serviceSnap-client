@@ -3,7 +3,6 @@ import React from "react";
 const ServiceToDoTableRow = ({ data, index, handleStatusUpdate }) => {
   const { serviceName, serviceDate, serviceTakerEmail, price, status, _id } =
     data;
-  // console.log(data);
 
   return (
     <>

@@ -17,7 +17,7 @@ const UpdateService = () => {
       const { data } = await axiosSecure.get(`/service/${id}`);
       setUpdateService(data);
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
     }
   };
   const handleUpdate = async (e) => {
@@ -34,12 +34,12 @@ const UpdateService = () => {
     try {
       const { data } = await axiosSecure.put(`/update/${id}`, serviceData);
 
-      console.log("Updated Data:", data);
+      // console.log("Updated Data:", data);
       navigate("/manage-service");
       form.reset();
       toast.success("Service Updated Successfully!");
     } catch (error) {
-      console.error("Error:", error.message);
+      // console.error("Error:", error.message);
       toast.error("Failed to Update Service!");
     }
   };
