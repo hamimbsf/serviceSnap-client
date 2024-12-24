@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvder";
-import axios from "axios";
 import { Helmet } from "react-helmet-async";
 import ServiceToDoTableRow from "../components/ServiceToDoTableRow";
 import { toast } from "react-toastify";
@@ -42,17 +41,17 @@ export const ServiceToDo = () => {
       <Helmet>
         <title>ServiceSnap || Service To Do</title>
       </Helmet>
-      <div className="overflow-x-auto container mx-auto py-16 px-4">
-        <table className="table">
+      <div className="overflow-x-auto container dark:text-white mx-auto py-16 px-4">
+        <table className="table ">
           {/* head */}
           <thead>
             <tr>
               <th></th>
-              <th>Service Name</th>
-              <th>Service Date</th>
-              <th>Email</th>
-              <th>Price</th>
-              <th>Status</th>
+              <th className=" dark:text-white">Service Name</th>
+              <th className=" dark:text-white">Service Date</th>
+              <th className=" dark:text-white">Email</th>
+              <th className=" dark:text-white">Price</th>
+              <th className=" dark:text-white">Status</th>
             </tr>
           </thead>
           <tbody>

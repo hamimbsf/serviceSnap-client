@@ -32,7 +32,7 @@ const ForgetPass = () => {
         className="hero absolute top-0 min-h-screen"
         style={{
           backgroundImage:
-            "url(https://i.ibb.co.com/JpsTjYf/BD-en-20241125-TRIFECTA-perspective-27f3ce45-f067-41fa-962f-9812262a5ba4-large.jpg)",
+            "url(https://i.ibb.co.com/VjMPmG4/360-F-803352721-D7-Hsy-Hc-Tp-Z9-Mw-DKYw-Ou-Kj-L7-XJ1-S5-Yg2o.jpg)",
         }}
       >
         <div className="hero-overlay bg-opacity-60"></div>

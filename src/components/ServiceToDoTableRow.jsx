@@ -7,7 +7,7 @@ const ServiceToDoTableRow = ({ data, index, handleStatusUpdate }) => {
 
   return (
     <>
-      <tr className="hover">
+      <tr>
         <th>{++index}</th>
         <td>{serviceName}</td>
         <td>{serviceDate}</td>

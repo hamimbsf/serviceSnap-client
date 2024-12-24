@@ -74,7 +74,7 @@ The person adding the service is a service Provider .  You have to store service
             {/* Image URL */}
             <div className="form-control mb-4">
               <label className="label">
-                <span className="label-text">Image URL of the Service</span>
+                <span className="">Image URL of the Service</span>
               </label>
               <input
                 type="url"
@@ -88,7 +88,7 @@ The person adding the service is a service Provider .  You have to store service
             {/* Service Name */}
             <div className="form-control mb-4">
               <label className="label">
-                <span className="label-text">Service Name</span>
+                <span className="">Service Name</span>
               </label>
               <input
                 type="text"
@@ -102,7 +102,7 @@ The person adding the service is a service Provider .  You have to store service
             {/* Price */}
             <div className="form-control mb-4">
               <label className="label">
-                <span className="label-text">Price</span>
+                <span className="">Price</span>
               </label>
               <input
                 type="number"
@@ -116,7 +116,7 @@ The person adding the service is a service Provider .  You have to store service
             {/* Service Area */}
             <div className="form-control mb-4">
               <label className="label">
-                <span className="label-text">Service Area</span>
+                <span className="">Service Area</span>
               </label>
               <select
                 name="area"
@@ -134,7 +134,7 @@ The person adding the service is a service Provider .  You have to store service
             {/* Description */}
             <div className="form-control mb-4">
               <label className="label">
-                <span className="label-text">Description</span>
+                <span className="">Description</span>
               </label>
               <textarea
                 name="description"

@@ -37,8 +37,7 @@ const Login = () => {
       <div
         className="hero absolute top-0 min-h-screen"
         style={{
-          backgroundImage:
-            "url(https://i.ibb.co.com/JpsTjYf/BD-en-20241125-TRIFECTA-perspective-27f3ce45-f067-41fa-962f-9812262a5ba4-large.jpg)",
+          backgroundImage: "url(https://i.ibb.co.com/p4NF8Jx/rb-35252.png)",
         }}
       >
         <div className="hero-overlay bg-opacity-60"></div>
