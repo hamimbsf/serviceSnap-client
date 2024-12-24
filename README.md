@@ -1,6 +1,10 @@
 # Overview
 
-The Service Sharing Platform Client is a user-friendly front-end application that allows users to register, log in, browse services offered by others, create service listings, and manage bookings. Built with React and styled using Tailwind CSS, the client-side is designed to provide an intuitive and responsive experience.
+Service Snap is an innovative service-sharing platform designed to bridge the gap between service providers and customers. Whether you're a freelancer, business owner, or individual with a unique skill, Service Snap makes it easy to share your services with a wide audience or find the perfect service provider for your needs.
+
+With a user-friendly interface, Service Snap offers a seamless experience where users can browse, book, and review services. Service providers can easily list their offerings, manage bookings, and receive feedback, while customers can quickly find trusted professionals for their tasks. The platform also includes features like user authentication, service ratings, and a smooth booking process to ensure satisfaction for both parties.
+
+Whether you're looking to share your expertise or find someone to fulfill a specific need, Service Snap is the go-to platform for all service-sharing needs.
 
 # Features
 
