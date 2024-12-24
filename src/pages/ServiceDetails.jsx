@@ -4,9 +4,11 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvder";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ServiceDetails = () => {
   const [service, setService] = useState([]);
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const { id } = useParams();
@@ -15,9 +17,7 @@ const ServiceDetails = () => {
   }, []);
   const fetchService = async () => {
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_SERVER_URL}/service/${id}`
-      );
+      const { data } = await axiosSecure.get(`/service/${id}`);
       setService(data);
     } catch (error) {
       console.log(error.message);
@@ -53,10 +53,7 @@ const ServiceDetails = () => {
     // console.log(serviceData);
 
     try {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_SERVER_URL}/book-service`,
-        serviceData
-      );
+      const { data } = await axiosSecure.post(`/book-service`, serviceData);
       // console.log(data);
       toast.success("Congrats");
       navigate("/booked-services");
@@ -131,7 +128,7 @@ const ServiceDetails = () => {
                     <div className="mb-4">
                       <label
                         htmlFor="serviceName"
-                        className="block text-sm font-medium text-white"
+                        className="block text-sm font-medium"
                       >
                         Service Name
                       </label>
@@ -148,7 +145,7 @@ const ServiceDetails = () => {
                     <div className="mb-4">
                       <label
                         htmlFor="providerEmail"
-                        className="block text-sm font-medium text-white"
+                        className="block text-sm font-medium"
                       >
                         Provider Email
                       </label>
@@ -165,7 +162,7 @@ const ServiceDetails = () => {
                     <div className="mb-4">
                       <label
                         htmlFor="providerName"
-                        className="block text-sm font-medium text-white"
+                        className="block text-sm font-medium"
                       >
                         Provider Name
                       </label>
@@ -182,7 +179,7 @@ const ServiceDetails = () => {
                     <div className="mb-4">
                       <label
                         htmlFor="currentUserEmail"
-                        className="block text-sm font-medium text-white"
+                        className="block text-sm font-medium"
                       >
                         Your Email
                       </label>
@@ -199,7 +196,7 @@ const ServiceDetails = () => {
                     <div className="mb-4">
                       <label
                         htmlFor="currentUserName"
-                        className="block text-sm font-medium text-white"
+                        className="block text-sm font-medium"
                       >
                         Your Name
                       </label>
@@ -216,7 +213,7 @@ const ServiceDetails = () => {
                     <div className="mb-4">
                       <label
                         htmlFor="serviceDate"
-                        className="block text-sm font-medium text-white"
+                        className="block text-sm font-medium"
                       >
                         Service Taking Date
                       </label>
@@ -232,7 +229,7 @@ const ServiceDetails = () => {
                     <div className="mb-4">
                       <label
                         htmlFor="specialInstructions"
-                        className="block text-sm font-medium text-white"
+                        className="block text-sm font-medium"
                       >
                         Special Instructions
                       </label>
@@ -249,7 +246,7 @@ const ServiceDetails = () => {
                     <div className="mb-4">
                       <label
                         htmlFor="price"
-                        className="block text-sm font-medium text-white"
+                        className="block text-sm font-medium"
                       >
                         Price
                       </label>
