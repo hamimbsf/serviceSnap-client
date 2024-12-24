@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Card = ({ service }) => {
@@ -13,7 +12,7 @@ const Card = ({ service }) => {
     providerPhoto,
   } = service;
   return (
-    <div className="card rounded-lg">
+    <div className="card shadow-lg dark:text-white rounded-lg">
       {/* Service Image */}
       <figure>
         <img

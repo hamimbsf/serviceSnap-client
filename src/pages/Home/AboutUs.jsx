@@ -8,7 +8,7 @@ const AboutUs = () => {
   }, []);
   return (
     <>
-      <div className="my-20 space-y-8" data-aos="fade-up">
+      <div className="my-20 dark:text-white space-y-8" data-aos="fade-up">
         <h1 className="uppercase font-medium md:text-[9vh] text-3xl text-center">
           s t o r y a b o u t u s
         </h1>

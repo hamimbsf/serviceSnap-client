@@ -1,10 +1,10 @@
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvder";
 import ServiceCard from "../components/ServiceCard";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 /*  Manage Services (PRIVATE)
 This page will be private routes.  If a user log in, they will access the Manage Service page, 
@@ -14,6 +14,7 @@ This page will show all the services they have added from the Add Service page.
 I believe you should use 'user' instead of 'they,' as it’s only the one who added the service. */
 const ManageService = () => {
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
   // console.log(user.email);
 
   const [serviceTaker, setServiceTaker] = useState([]);
@@ -23,9 +24,7 @@ const ManageService = () => {
   }, []);
   const fetchData = async () => {
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_SERVER_URL}/all-services/${user?.email}`
-      );
+      const { data } = await axiosSecure.get(`/all-services/${user?.email}`);
       setServiceTaker(data);
     } catch (error) {
       console.log(error.message);
@@ -44,9 +43,7 @@ const ManageService = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await axios.delete(
-            `${import.meta.env.VITE_SERVER_URL}/delete-service/${id}`
-          );
+          const response = await axiosSecure.delete(`/delete-service/${id}`);
 
           if (response.status === 200) {
             // Assuming fetchData refreshes the list

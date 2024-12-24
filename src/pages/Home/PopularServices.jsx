@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Card from "../../components/Card";
-import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const PopularServices = () => {
   const [allServices, setAllServices] = useState([]);
+  const axiosSecure = useAxiosSecure();
   useEffect(() => {
     const fetchAllData = async () => {
       try {
-        const { data } = await axios.get(
-          `${import.meta.env.VITE_SERVER_URL}/popular-services`
-        );
+        const { data } = await axiosSecure.get(`/popular-services`);
         setAllServices(data);
       } catch (error) {
         console.log(error.message);
@@ -17,6 +17,7 @@ const PopularServices = () => {
     };
     fetchAllData();
   }, []);
+  // const newData = useQuery({});
 
   return (
     <div>

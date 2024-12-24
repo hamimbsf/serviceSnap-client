@@ -1,10 +1,11 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const UpdateService = () => {
   const [updateService, setUpdateService] = useState([]);
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { id } = useParams();
   useEffect(() => {
@@ -12,9 +13,7 @@ const UpdateService = () => {
   }, []);
   const fetchService = async () => {
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_SERVER_URL}/service/${id}`
-      );
+      const { data } = await axiosSecure.get(`/service/${id}`);
       setUpdateService(data);
     } catch (error) {
       console.log(error.message);
@@ -32,10 +31,7 @@ const UpdateService = () => {
     };
 
     try {
-      const { data } = await axios.put(
-        `${import.meta.env.VITE_SERVER_URL}/update/${id}`,
-        serviceData
-      );
+      const { data } = await axiosSecure.put(`/update/${id}`, serviceData);
 
       console.log("Updated Data:", data);
       navigate("/manage-service");

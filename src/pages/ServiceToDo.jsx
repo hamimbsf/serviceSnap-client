@@ -4,9 +4,11 @@ import axios from "axios";
 import { Helmet } from "react-helmet-async";
 import ServiceToDoTableRow from "../components/ServiceToDoTableRow";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 export const ServiceToDo = () => {
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
   const [providerData, setProviderData] = useState([]);
   const { email } = user;
   useEffect(() => {
@@ -14,9 +16,7 @@ export const ServiceToDo = () => {
   }, []);
   const fetchProviderData = async () => {
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_SERVER_URL}/service-provider/${email}`
-      );
+      const { data } = await axiosSecure.get(`/service-provider/${email}`);
       // console.log(data);
       setProviderData(data);
     } catch (error) {
@@ -27,10 +27,9 @@ export const ServiceToDo = () => {
     console.table({ id, prevStatus, status });
     if (prevStatus === status) return toast.error("Not Allowed");
     try {
-      const { data } = await axios.patch(
-        `${import.meta.env.VITE_SERVER_URL}/service-status-update/${id}`,
-        { status }
-      );
+      const { data } = await axiosSecure.patch(`/service-status-update/${id}`, {
+        status,
+      });
       console.log(data);
       fetchProviderData();
     } catch (error) {

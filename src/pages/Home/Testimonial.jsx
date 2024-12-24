@@ -34,8 +34,8 @@ const Testimonial = () => {
   ];
   return (
     <>
-      <div className=" py-10">
-        <div className="container mx-auto text-center">
+      <div className="py-10">
+        <div className="container dark:text-white mx-auto text-center">
           <h2 className="text-4xl font-bold mb-6">What Our Users Say</h2>
           <p className="mb-10">
             Hear from users who’ve experienced the power of service sharing.

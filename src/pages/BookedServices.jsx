@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvder";
-import axios from "axios";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const BookedServices = () => {
+  const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
   const { email } = user;
   const [bookedData, setBookedData] = useState([]);
@@ -12,9 +13,7 @@ const BookedServices = () => {
   }, []);
   const fetchedBookedData = async () => {
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_SERVER_URL}/booked-services/${email}`
-      );
+      const { data } = await axiosSecure.get(`/booked-services/${email}`);
       setBookedData(data);
       // console.log(data);
     } catch (error) {

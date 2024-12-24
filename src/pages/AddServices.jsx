@@ -1,8 +1,9 @@
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../provider/AuthProvder";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useNavigate } from "react-router-dom";
 
 const AddServices = () => {
   /* Create an Add Product page where there will be a form having the following fields:
@@ -18,6 +19,8 @@ The person adding the service is a service Provider .  You have to store service
  */
 
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const handleAddService = async (e) => {
     e.preventDefault();
@@ -41,11 +44,9 @@ The person adding the service is a service Provider .  You have to store service
     // console.log(serviceData);
 
     try {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_SERVER_URL}/add-services`,
-        serviceData
-      );
+      const { data } = await axiosSecure.post(`/add-services`, serviceData);
       toast.success("Congrates!");
+      navigate("/manage-service");
       form.reset();
     } catch (error) {
       console.log(error.message);
