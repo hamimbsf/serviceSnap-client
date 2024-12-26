@@ -1,11 +1,9 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
 
 const Testimonial = () => {
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
   const testimonials = [
     {
       name: "Nahid Ibn Ali",
@@ -32,6 +30,13 @@ const Testimonial = () => {
         "https://i.ibb.co.com/LzCK9JQ/414139825-1115480086312953-4786617054656948412-n.jpg",
     },
   ];
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration
+      once: false, // Allow animations to trigger multiple times
+    });
+  }, []);
   return (
     <>
       <div className="py-10">
