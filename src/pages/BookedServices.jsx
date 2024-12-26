@@ -40,18 +40,24 @@ const BookedServices = () => {
             </tr>
           </thead>
           <tbody>
-            {bookedData?.map((data, index) => (
-              <tr key={data._id}>
-                <th>{++index}</th>
-                <td>{data?.serviceName}</td>
-                <td>{data?.serviceDate}</td>
-                <td>{data?.serviceProviderEmail}</td>
-                <td>{data?.price}</td>
-                <td className="">
-                  <span className="btn btn-xs btn-warning">{data?.status}</span>
-                </td>
-              </tr>
-            ))}
+            {BookedServices.length === 0 ? (
+              <p>You haven't booked any service yet</p>
+            ) : (
+              bookedData?.map((data, index) => (
+                <tr key={data._id}>
+                  <th>{++index}</th>
+                  <td>{data?.serviceName}</td>
+                  <td>{data?.serviceDate}</td>
+                  <td>{data?.serviceProviderEmail}</td>
+                  <td>{data?.price}</td>
+                  <td className="">
+                    <span className="btn btn-xs btn-warning">
+                      {data?.status}
+                    </span>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

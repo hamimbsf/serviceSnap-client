@@ -57,14 +57,18 @@ export const ServiceToDo = () => {
             </tr>
           </thead>
           <tbody>
-            {providerData?.map((data, index) => (
-              <ServiceToDoTableRow
-                handleStatusUpdate={handleStatusUpdate}
-                key={data._id}
-                data={data}
-                index={index}
-              />
-            ))}
+            {providerData.length === 0 ? (
+              <p className="">You haven't added any service yet</p>
+            ) : (
+              providerData?.map((data, index) => (
+                <ServiceToDoTableRow
+                  handleStatusUpdate={handleStatusUpdate}
+                  key={data._id}
+                  data={data}
+                  index={index}
+                />
+              ))
+            )}
           </tbody>
         </table>
       </div>
