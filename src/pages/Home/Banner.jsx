@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Banner = () => {
   return (
     <>
@@ -36,20 +38,22 @@ const Banner = () => {
               </div>
               <div className="absolute left-20 -bottom-5 flex -translate-y-1/2 transform">
                 {/* <p className="text-5xl text-red-500">h</p> */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-[25vh] w-20 text-white hover:text-red-600 transition animate-bounce"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5 10l7 7m0 0l7-7m-7 7V2"
-                  />
-                </svg>
+                <a href="#services">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-[25vh] w-20 text-white hover:text-red-600 transition animate-bounce"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 10l7 7m0 0l7-7m-7 7V2"
+                    />
+                  </svg>
+                </a>
               </div>
             </div>
             <div id="slide1" className="carousel-item relative w-full">
