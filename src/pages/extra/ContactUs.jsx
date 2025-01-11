@@ -40,7 +40,7 @@ const ContactUs = () => {
         className="hero absolute top-0 min-h-screen"
         style={{
           backgroundImage:
-            "url(https://i.ibb.co.com/WFgxBPb/Network-services-scaled.webp)",
+            "url(https://static.vecteezy.com/system/resources/previews/014/549/640/non_2x/contact-us-via-email-phone-or-office-location-communicate-with-customer-or-client-business-information-or-channel-for-business-contact-concept-businessman-with-telephone-email-and-location-pin-vector.jpg)",
         }}
       >
         <div className="hero-overlay bg-opacity-60"></div>

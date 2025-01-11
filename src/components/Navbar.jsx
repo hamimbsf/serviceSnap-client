@@ -54,10 +54,14 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar sticky top-0 z-[99] dark:bg-[#fffefeb6] bg-[#b7b7b793] md:px-8">
+      <div className="navbar sticky top-0 z-[99] dark:bg-[#fffefe81] bg-[#b7b7b754] backdrop-blur-xl md:px-8">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost  lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"

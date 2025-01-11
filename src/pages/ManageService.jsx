@@ -79,7 +79,7 @@ const ManageService = () => {
       </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 container mx-auto px-4 py-8 my-10">
         {serviceTaker.length === 0 ? (
-          <p className="text-4xl dark:text-white">You haven't added any </p>
+          <p className="text-2xl dark:text-white">You haven't added any </p>
         ) : (
           serviceTaker?.map((service) => (
             <ServiceCard

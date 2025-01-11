@@ -62,7 +62,7 @@ The person adding the service is a service Provider .  You have to store service
         className="hero absolute top-0 min-h-screen"
         style={{
           backgroundImage:
-            "url(https://i.ibb.co.com/WFgxBPb/Network-services-scaled.webp)",
+            "url(https://img.freepik.com/premium-vector/professional-consulting-strategy-management-problem-solving-services-flat-illustration_720185-2846.jpg)",
         }}
       >
         <div className="hero-overlay bg-opacity-60"></div>

@@ -27,23 +27,23 @@ const BookedServices = () => {
         <title>ServiceSnap || Booked Service</title>
       </Helmet>
       <div className="overflow-x-auto container dark:text-white mx-auto my-16 px-4">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr>
-              <th className="dark:text-white"></th>
-              <th className="dark:text-white">Service Name</th>
-              <th className="dark:text-white">Service Date</th>
-              <th className="dark:text-white">Service Provider Email</th>
-              <th className="dark:text-white">Price</th>
-              <th className="dark:text-white">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {BookedServices.length === 0 ? (
-              <p>You haven't booked any service yet</p>
-            ) : (
-              bookedData?.map((data, index) => (
+        {bookedData.length === 0 ? (
+          <p className=" text-2xl font-bold">You haven't booked any services</p>
+        ) : (
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th className="dark:text-white"></th>
+                <th className="dark:text-white">Service Name</th>
+                <th className="dark:text-white">Service Date</th>
+                <th className="dark:text-white">Service Provider Email</th>
+                <th className="dark:text-white">Price</th>
+                <th className="dark:text-white">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {bookedData?.map((data, index) => (
                 <tr key={data._id}>
                   <th>{++index}</th>
                   <td>{data?.serviceName}</td>
@@ -56,10 +56,10 @@ const BookedServices = () => {
                     </span>
                   </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </>
   );

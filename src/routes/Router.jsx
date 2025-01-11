@@ -39,7 +39,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-services",
-        element: <AllServices />,
+        element: (
+          <PrivateRoute>
+            <AllServices />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/contactUs",

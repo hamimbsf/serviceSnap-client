@@ -43,35 +43,37 @@ export const ServiceToDo = () => {
       <Helmet>
         <title>ServiceSnap || Service To Do</title>
       </Helmet>
-      <div className="overflow-x-auto container dark:text-white mx-auto py-16 px-4">
-        <table className="table ">
-          {/* head */}
-          <thead>
-            <tr>
-              <th></th>
-              <th className=" dark:text-white">Service Name</th>
-              <th className=" dark:text-white">Service Date</th>
-              <th className=" dark:text-white">Email</th>
-              <th className=" dark:text-white">Price</th>
-              <th className=" dark:text-white">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {providerData.length === 0 ? (
-              <p className="">You haven't added any service yet</p>
-            ) : (
-              providerData?.map((data, index) => (
+      {providerData.length === 0 ? (
+        <p className="text-2xl font-bold dark:text-white mt-8">
+          You haven't added any service yet
+        </p>
+      ) : (
+        <div className="overflow-x-auto container dark:text-white mx-auto py-16 px-4">
+          <table className="table ">
+            {/* head */}
+            <thead>
+              <tr>
+                <th></th>
+                <th className=" dark:text-white">Service Name</th>
+                <th className=" dark:text-white">Service Date</th>
+                <th className=" dark:text-white">Email</th>
+                <th className=" dark:text-white">Price</th>
+                <th className=" dark:text-white">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {providerData?.map((data, index) => (
                 <ServiceToDoTableRow
                   handleStatusUpdate={handleStatusUpdate}
                   key={data._id}
                   data={data}
                   index={index}
                 />
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </>
   );
 };
