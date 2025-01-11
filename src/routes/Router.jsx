@@ -13,6 +13,7 @@ import ForgetPass from "../authentication/ForgetPass";
 import PrivateRoute from "../authentication/Private/PrivateRoute";
 import ErrorPage from "../pages/ErrorPage";
 import UpdateService from "../pages/UpdateService";
+import ContactUs from "../pages/extra/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/all-services",
         element: <AllServices />,
+      },
+      {
+        path: "/contactUs",
+        element: <ContactUs />,
       },
       {
         path: "/service/:id",
